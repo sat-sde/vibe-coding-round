@@ -1,0 +1,11 @@
+# Root .gitignore for ai-chat-assistant
+node_modules/
+.env
+.DS_Store
+
+# Client build
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
