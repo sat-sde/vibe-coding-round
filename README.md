@@ -1,6 +1,6 @@
 # AI Chat Assistant (MERN Stack)
 
-A full-stack AI Chat Assistant built with MongoDB, Express, React (Vite), and Node.js — powered by the OpenAI API with real-time streaming responses via Server-Sent Events.
+A full-stack AI Chat Assistant built with MongoDB, Express, React (Vite), and Node.js — powered by the **Mistral AI API** with real-time streaming responses via Server-Sent Events.
 
 ## Features
 
@@ -19,7 +19,7 @@ A full-stack AI Chat Assistant built with MongoDB, Express, React (Vite), and No
 | Frontend | React 18 + Vite          |
 | Backend  | Node.js + Express.js     |
 | Database | MongoDB + Mongoose       |
-| AI       | OpenAI API (GPT-3.5)     |
+| AI       | Mistral AI API (`mistral-small-latest`) |
 | Streaming| Server-Sent Events (SSE) |
 
 ## Project Structure
@@ -70,7 +70,7 @@ cp .env.example .env
 
 Edit `server/.env`:
 ```
-OPENAI_API_KEY=sk-...your-key-here...
+MISTRAL_API_KEY=your-key-here
 MONGODB_URI=mongodb://localhost:27017/ai-chat-assistant
 PORT=5000
 ```
@@ -128,7 +128,7 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 | Variable        | Required | Description                      |
 |-----------------|----------|----------------------------------|
-| `OPENAI_API_KEY`| ✅        | Your OpenAI API key              |
+| `MISTRAL_API_KEY`| ✅        | Your Mistral API key             |
 | `MONGODB_URI`   | ✅        | MongoDB connection string        |
 | `PORT`          | ❌        | Server port (default: 5000)      |
 | `CLIENT_URL`    | ❌        | Frontend URL for CORS (default: http://localhost:5173) |

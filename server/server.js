@@ -21,7 +21,7 @@ app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
     db: dbStatus,
-    openai: !!process.env.OPENAI_API_KEY,
+    mistral: !!process.env.MISTRAL_API_KEY,
   });
 });
 
@@ -53,8 +53,8 @@ const connectDB = async () => {
 connectDB().then(() => {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
-    if (!process.env.OPENAI_API_KEY) {
-      console.warn('⚠️  OPENAI_API_KEY not set. Chat features will not work.');
+    if (!process.env.MISTRAL_API_KEY) {
+      console.warn('⚠️  MISTRAL_API_KEY not set. Chat features will not work.');
     }
   });
 });

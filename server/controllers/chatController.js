@@ -18,11 +18,11 @@ export const streamChat = async (req, res) => {
 
   let conversation;
 
-  // Check OpenAI key early
-  if (!process.env.OPENAI_API_KEY) {
+  // Check Mistral key early
+  if (!process.env.MISTRAL_API_KEY) {
     return res.status(503).json({
       error: 'Configuration error',
-      message: 'OPENAI_API_KEY is not configured. Please set it in your .env file.',
+      message: 'MISTRAL_API_KEY is not configured. Please set it in your .env file.',
     });
   }
 

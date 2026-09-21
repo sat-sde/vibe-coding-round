@@ -200,7 +200,7 @@ export default function App() {
               <div className="chat-header-title">
                 {activeTitle || 'AI Chat Assistant'}
               </div>
-              <div className="chat-header-subtitle">Powered by OpenAI · GPT-3.5 Turbo</div>
+              <div className="chat-header-subtitle">Powered by Mistral AI · ministral-8b-latest</div>
             </div>
           </div>
         </div>
