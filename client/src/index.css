@@ -701,6 +701,24 @@ html, body {
 }
 
 /* ============================================================
+   MARKDOWN IN AI BUBBLES
+   ============================================================ */
+.ai-bubble pre {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  overflow-x: auto;
+  font-size: 13px;
+  font-family: 'Fira Code', 'Consolas', monospace;
+  margin: 8px 0;
+  white-space: pre;
+}
+
+.ai-bubble strong { font-weight: 600; color: var(--text-primary); }
+.ai-bubble em { font-style: italic; opacity: 0.9; }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 768px) {

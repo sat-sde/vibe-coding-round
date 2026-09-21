@@ -4,6 +4,22 @@ function formatTime(dateStr) {
   return d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
 }
 
+// Simple markdown renderer: bold, italic, inline code
+function renderMarkdown(text) {
+  if (!text) return '';
+  return text
+    // Code blocks (```...```)
+    .replace(/```[\w]*\n?([\s\S]*?)```/g, '<pre><code>$1</code></pre>')
+    // Inline code (`...`)
+    .replace(/`([^`]+)`/g, '<code style="background:rgba(255,255,255,0.08);padding:2px 6px;border-radius:4px;font-size:0.9em;font-family:monospace">$1</code>')
+    // Bold (**...**  or __...__)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/__([^_]+)__/g, '<strong>$1</strong>')
+    // Italic (*...* or _..._)
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    .replace(/_([^_]+)_/g, '<em>$1</em>');
+}
+
 export default function MessageBubble({ message }) {
   const isUser = message.role === 'user';
 
@@ -52,7 +68,15 @@ export default function MessageBubble({ message }) {
       </div>
       <div className="message-content">
         <div className={`message-bubble ${isUser ? 'user-bubble' : 'ai-bubble'}`}>
-          {message.content}
+          {isUser ? (
+            // User messages: plain text (safe, no XSS risk)
+            <span>{message.content}</span>
+          ) : (
+            // AI messages: render markdown
+            <span
+              dangerouslySetInnerHTML={{ __html: renderMarkdown(message.content) }}
+            />
+          )}
           {message.isStreaming && <span className="streaming-cursor" aria-hidden="true" />}
         </div>
         <div className="message-time">{formatTime(message.timestamp)}</div>
