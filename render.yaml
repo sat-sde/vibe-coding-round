@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: ai-chat-assistant
+    runtime: node
+    rootDir: .
+    buildCommand: npm install --prefix server && npm install --prefix client && npm run build --prefix client
+    startCommand: NODE_ENV=production node server/server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MISTRAL_API_KEY
+        sync: false   # set manually in Render dashboard
+      - key: MONGODB_URI
+        sync: false   # set manually in Render dashboard
